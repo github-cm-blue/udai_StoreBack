@@ -103,11 +103,34 @@ export const constantRoutes = [
         hidden:true,
         component:()=> import('@/views/addProduct/index'),
         meta:{title:'商品添加',icon:'form'}
+      },    
+    ]
+
+  },
+  {
+    path:'/orderInfo',
+    component:Layout,
+    redirect:'/orderInfo/orderInfoList',
+    alwaysShow: true,
+    name:'addOrder',
+    meta:{title:'订单管理',icon:'example'},
+    children:[
+      {
+        path:'orderInfoList',
+        name:'OrderInfoList',
+        component:()=> import('@/views/orderInfo/index'),
+        meta:{title:'订单列表',icon:'table'}
+      },
+      {
+        path:'addOrder',
+        name:'AddOrder',
+        hidden:true,
+        component:()=> import('@/views/addOrder/index'),
+        meta:{title:'订单添加',icon:'form'}
       },
     ]
 
   },
-
 
   {
     path: '/form',

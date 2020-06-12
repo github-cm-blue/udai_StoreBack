@@ -12,7 +12,7 @@ const service = axios.create({
 //4）、响应拦截器
 service.interceptors.response.use(response=>{
     const res = response.data
-
+    
     if(res.code!=1000){
         return Promise.reject(new Error(res.message || 'Error'))
     }else{
