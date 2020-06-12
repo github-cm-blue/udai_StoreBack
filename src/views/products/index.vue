@@ -13,12 +13,17 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="ID" width="95">
+      <el-table-column align="center" label="序号" width="95">
         <template slot-scope="scope">
-          {{ scope.$index }}
+          {{ scope.$index+1 }}
         </template>
       </el-table-column>
-      <el-table-column label="名称" width="440">
+      <el-table-column align="center" label="ID" width="95">
+        <template slot-scope="scope">
+          {{ scope.row.productId }}
+        </template>
+      </el-table-column>
+      <el-table-column label="名称" width="400">
         <template slot-scope="scope">
           {{ scope.row.productName }}
         </template>
@@ -43,11 +48,7 @@
           {{ scope.row.sjtime }}
         </template>
       </el-table-column>
-      <el-table-column label="下架时间" width="200">
-        <template slot-scope="scope">
-          {{ scope.row.xjtime }}
-        </template>
-      </el-table-column>
+     
       <el-table-column label="库存" width="95">
         <template slot-scope="scope">
           {{ scope.row.stock }}
@@ -76,7 +77,7 @@ import moment from 'moment'
             return{
                 list:null,
                 listLoading:true,
-                 skip:0,
+                skip:0,
                 take:10
             }
         },
@@ -103,12 +104,7 @@ import moment from 'moment'
                     this.list.forEach(item => {
                         //上架时间
                         item.sjtime=moment(item.createTime).format('yyyy/MM/DD'); 
-                        //下架时间
-                        if(item.undercarriage==null){
-                            item.xjtime='无';
-                        }else{
-                            item.xjtime=moment(item.undercarriage).format('yyyy/MM/DD'); 
-                        }
+                       
 
                     });
 
